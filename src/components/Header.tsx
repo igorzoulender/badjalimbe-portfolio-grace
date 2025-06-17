@@ -1,6 +1,6 @@
 
 import { useState, useEffect } from 'react';
-import { Menu, X, User, Code, Briefcase, Mail } from 'lucide-react';
+import { Menu, X, User, Code, Briefcase, Mail, FolderOpen, GraduationCap } from 'lucide-react';
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -19,6 +19,8 @@ const Header = () => {
     { name: 'Accueil', href: '#hero', icon: User },
     { name: 'Compétences', href: '#skills', icon: Code },
     { name: 'Expérience', href: '#experience', icon: Briefcase },
+    { name: 'Projets', href: '#projects', icon: FolderOpen },
+    { name: 'Formation', href: '#education', icon: GraduationCap },
     { name: 'Contact', href: '#contact', icon: Mail },
   ];
 
