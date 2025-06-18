@@ -11,7 +11,7 @@ const ProjectsSection = () => {
       title: "ANGE-TOGO",
       subtitle: "Agence Nationale de Gestion de l'Environnement",
       description: "Site web officiel de l'ANGE-TOGO développé dans le cadre du colloque de digitalisation des certificats de conformité environnementale.",
-      image: "/placeholder.svg",
+      image: "/lovable-uploads/5af90338-10b3-4b89-8bce-64a2880d94c4.png",
       technologies: ["React", "TypeScript", "Tailwind CSS", "Node.js"],
       features: [
         "Système de certificats numériques",
@@ -94,7 +94,13 @@ const ProjectsSection = () => {
                 {/* Project Header */}
                 <div className="relative h-48 bg-gradient-to-br from-primary/20 to-accent/20 flex items-center justify-center overflow-hidden">
                   <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(120,119,198,0.1),transparent)] opacity-20"></div>
-                  {project.title === "Plateforme IAI-TOGO" ? (
+                  {project.title === "ANGE-TOGO" ? (
+                    <img 
+                      src={project.image} 
+                      alt="ANGE-TOGO Website" 
+                      className="w-full h-full object-cover"
+                    />
+                  ) : project.title === "Plateforme IAI-TOGO" ? (
                     <img 
                       src={project.image} 
                       alt="IAI-TOGO Platform" 
