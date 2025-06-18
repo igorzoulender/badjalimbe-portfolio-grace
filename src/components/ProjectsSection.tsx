@@ -1,4 +1,3 @@
-
 import { useEffect, useRef } from 'react';
 import { ExternalLink, Github, Globe, Calendar, Users, Code, Award } from 'lucide-react';
 import { Button } from '@/components/ui/button';
@@ -11,8 +10,8 @@ const ProjectsSection = () => {
       title: "ANGE-TOGO",
       subtitle: "Agence Nationale de Gestion de l'Environnement",
       description: "Site web officiel de l'ANGE-TOGO développé dans le cadre du colloque de digitalisation des certificats de conformité environnementale.",
-      image: "/placeholder.svg",
-      technologies: ["React", "TypeScript", "Tailwind CSS", "Node.js"],
+      image: "/img/ange.png",
+      technologies: ["Nuxt js", "TypeScript", "Tailwind CSS", "Laravel"],
       features: [
         "Système de certificats numériques",
         "Interface d'administration",
@@ -23,13 +22,14 @@ const ProjectsSection = () => {
       category: "Site Institutionnel",
       status: "En production",
       year: "2023-2024",
-      team: "Équipe NEO START TECHNOLOGY"
+      team: "Développement Full Stack"
     },
+
     {
       title: "Plateforme IAI-TOGO",
       subtitle: "Institut Africain d'Informatique - Togo",
       description: "Portail académique complet pour la gestion des étudiants, candidatures, emplois du temps et évaluations de l'IAI-TOGO.",
-      image: "/placeholder.svg",
+      image: "/img/iai.png",
       technologies: ["PHP", "Laravel", "MySQL", "Bootstrap", "JavaScript"],
       features: [
         "Gestion des candidatures en ligne",
@@ -40,6 +40,25 @@ const ProjectsSection = () => {
       ],
       link: "https://new.iai-togo.tg/officiel",
       category: "Plateforme Éducative",
+      status: "En production",
+      year: "2023-2024",
+      team: "Développement Full Stack"
+    },
+    {
+      title: "ICC - COVOITURAGE",
+      subtitle: "Impact Centre Chrétien - Covoiturage",
+      description: "ICC-covoiturage est une application de mise en relation entre les membres de l’église Impact Centre Chrétien (ICC) pour faciliter le transport lors des activités de l’église. L’objectif est d’encourager l’entraide et de permettre à chacun de se rendre aux événements plus facilement.",
+      image: "/img/icc.png",
+      technologies: ["Nuxt Js", "Flutter", "Dart", "PHP", "Laravel", "MySQL", "Tailwind CSS", "TypeScript"],
+      features: [
+        "Covoiturage simplifié",
+        "Activités de l'Église",
+        "Gestion des notes et évaluations",
+        "Dashboard admin",
+        "Consultation et validation des demandes"
+      ],
+      link: "https://covoiturageicctogo.org/",
+      category: "Plateforme communautaire",
       status: "En production",
       year: "2023-2024",
       team: "Développement Full Stack"
@@ -84,7 +103,7 @@ const ProjectsSection = () => {
           </p>
         </div>
         
-        <div className="grid lg:grid-cols-2 gap-8 max-w-7xl mx-auto">
+        <div className="grid lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
           {projects.map((project, index) => (
             <div 
               key={index} 
@@ -92,9 +111,31 @@ const ProjectsSection = () => {
             >
               <div className="bg-card/50 backdrop-blur-sm border border-border rounded-lg overflow-hidden h-full flex flex-col hover:shadow-lg hover:shadow-primary/10 transition-all duration-300">
                 {/* Project Header */}
-                <div className="relative h-48 bg-gradient-to-br from-primary/20 to-accent/20 flex items-center justify-center">
+                <div className="relative h-48 bg-gradient-to-br from-primary/20 to-accent/20 flex items-center justify-center overflow-hidden">
                   <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(120,119,198,0.1),transparent)] opacity-20"></div>
-                  <Globe className="w-16 h-16 text-primary animate-pulse" />
+                  {project.title === "ANGE-TOGO" ? (
+                    <img 
+                      src={project.image} 
+                      alt="ANGE-TOGO Website" 
+                      className="w-full h-full object-cover"
+                    />
+                  ) : project.title === "Plateforme IAI-TOGO" ? (
+                    <img 
+                      src={project.image} 
+                      alt="IAI-TOGO Platform" 
+                      className="w-full h-full object-cover"
+                    />
+                  ) 
+                  : project.title === "ICC - COVOITURAGE" ? (
+                    <img 
+                      src={project.image} 
+                      alt="ICC - COVOITURAGE" 
+                      className="w-full h-full object-cover"
+                    />
+                  ) 
+                  : (
+                    <Globe className="w-16 h-16 text-primary animate-pulse" />
+                  )}
                   <div className="absolute top-4 right-4">
                     <span className="px-3 py-1 bg-green-500/20 text-green-400 border border-green-500/30 rounded-full text-sm">
                       {project.status}
@@ -172,7 +213,7 @@ const ProjectsSection = () => {
                   <div className="mt-auto">
                     <Button 
                       asChild
-                      className="w-full border border-primary/30 hover:bg-primary/10 group bg-transparent"
+                      className="w-full border border-primary/30 hover:bg-none group bg-transparent"
                       variant="outline"
                     >
                       <a 
@@ -181,7 +222,7 @@ const ProjectsSection = () => {
                         rel="noopener noreferrer"
                         className="flex items-center justify-center"
                       >
-                        <Globe className="w-4 h-4 mr-2 group-hover:animate-pulse" />
+                        <Globe className="w-4 h-4 mr-2" />
                         Visiter le site
                         <ExternalLink className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
                       </a>
@@ -191,20 +232,6 @@ const ProjectsSection = () => {
               </div>
             </div>
           ))}
-        </div>
-
-        {/* Additional Info */}
-        <div className="text-center mt-16">
-          <div className="bg-card/50 backdrop-blur-sm border border-border p-8 rounded-lg max-w-4xl mx-auto">
-            <h3 className="text-2xl font-bold text-gradient mb-4">
-              Collaboration & Partenariats
-            </h3>
-            <p className="text-foreground/80 leading-relaxed">
-              Ces projets ont été réalisés en collaboration avec <strong>ATD TOGO</strong> et 
-              <strong> SWITCH Maker</strong> dans le cadre du programme Schéma Directeur Départemental. 
-              Ils témoignent de mon expertise en développement full stack et en gestion de projets IT complexes.
-            </p>
-          </div>
         </div>
       </div>
     </section>
