@@ -29,7 +29,7 @@ const ProjectsSection = () => {
       title: "Plateforme IAI-TOGO",
       subtitle: "Institut Africain d'Informatique - Togo",
       description: "Portail académique complet pour la gestion des étudiants, candidatures, emplois du temps et évaluations de l'IAI-TOGO.",
-      image: "/placeholder.svg",
+      image: "/lovable-uploads/fc70df0e-485a-4cb0-bb4c-fd35208186cf.png",
       technologies: ["PHP", "Laravel", "MySQL", "Bootstrap", "JavaScript"],
       features: [
         "Gestion des candidatures en ligne",
@@ -92,9 +92,17 @@ const ProjectsSection = () => {
             >
               <div className="bg-card/50 backdrop-blur-sm border border-border rounded-lg overflow-hidden h-full flex flex-col hover:shadow-lg hover:shadow-primary/10 transition-all duration-300">
                 {/* Project Header */}
-                <div className="relative h-48 bg-gradient-to-br from-primary/20 to-accent/20 flex items-center justify-center">
+                <div className="relative h-48 bg-gradient-to-br from-primary/20 to-accent/20 flex items-center justify-center overflow-hidden">
                   <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(120,119,198,0.1),transparent)] opacity-20"></div>
-                  <Globe className="w-16 h-16 text-primary animate-pulse" />
+                  {project.title === "Plateforme IAI-TOGO" ? (
+                    <img 
+                      src={project.image} 
+                      alt="IAI-TOGO Platform" 
+                      className="w-full h-full object-cover"
+                    />
+                  ) : (
+                    <Globe className="w-16 h-16 text-primary animate-pulse" />
+                  )}
                   <div className="absolute top-4 right-4">
                     <span className="px-3 py-1 bg-green-500/20 text-green-400 border border-green-500/30 rounded-full text-sm">
                       {project.status}
