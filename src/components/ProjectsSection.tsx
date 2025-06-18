@@ -54,7 +54,8 @@ const ProjectsSection = () => {
             const cards = entry.target.querySelectorAll('.project-card');
             cards.forEach((card, index) => {
               setTimeout(() => {
-                card.classList.add('animate-slide-up');
+                card.classList.remove('opacity-0', 'translate-y-16');
+                card.classList.add('opacity-100', 'translate-y-0');
               }, index * 200);
             });
           }
@@ -76,7 +77,7 @@ const ProjectsSection = () => {
       
       <div ref={sectionRef} className="container mx-auto px-6 relative z-10">
         <div className="text-center mb-16">
-          <h2 className="section-title">Projets Réalisés</h2>
+          <h2 className="text-4xl md:text-5xl font-bold text-gradient mb-6">Projets Réalisés</h2>
           <p className="text-xl text-foreground/70 max-w-3xl mx-auto">
             Découvrez mes projets récents où j'ai pu mettre en pratique mes compétences 
             en développement web et gestion de projet IT.
@@ -87,12 +88,12 @@ const ProjectsSection = () => {
           {projects.map((project, index) => (
             <div 
               key={index} 
-              className="project-card opacity-0 transform translate-y-16"
+              className="project-card opacity-0 transform translate-y-16 transition-all duration-500 ease-out"
             >
-              <div className="cyber-border rounded-lg overflow-hidden h-full flex flex-col">
+              <div className="bg-card/50 backdrop-blur-sm border border-border rounded-lg overflow-hidden h-full flex flex-col hover:shadow-lg hover:shadow-primary/10 transition-all duration-300">
                 {/* Project Header */}
                 <div className="relative h-48 bg-gradient-to-br from-primary/20 to-accent/20 flex items-center justify-center">
-                  <div className="absolute inset-0 bg-cyber-grid bg-grid opacity-20"></div>
+                  <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(120,119,198,0.1),transparent)] opacity-20"></div>
                   <Globe className="w-16 h-16 text-primary animate-pulse" />
                   <div className="absolute top-4 right-4">
                     <span className="px-3 py-1 bg-green-500/20 text-green-400 border border-green-500/30 rounded-full text-sm">
@@ -105,7 +106,9 @@ const ProjectsSection = () => {
                   {/* Project Info */}
                   <div className="mb-6">
                     <div className="flex items-center justify-between mb-2">
-                      <span className="skill-tag">{project.category}</span>
+                      <span className="px-3 py-1 bg-secondary/50 text-secondary-foreground rounded-full text-sm border border-border">
+                        {project.category}
+                      </span>
                       <div className="flex items-center text-foreground/60 text-sm">
                         <Calendar className="w-4 h-4 mr-1" />
                         {project.year}
@@ -169,7 +172,7 @@ const ProjectsSection = () => {
                   <div className="mt-auto">
                     <Button 
                       asChild
-                      className="w-full cyber-border hover:bg-primary/10 group"
+                      className="w-full border border-primary/30 hover:bg-primary/10 group bg-transparent"
                       variant="outline"
                     >
                       <a 
@@ -192,7 +195,7 @@ const ProjectsSection = () => {
 
         {/* Additional Info */}
         <div className="text-center mt-16">
-          <div className="cyber-border p-8 rounded-lg max-w-4xl mx-auto">
+          <div className="bg-card/50 backdrop-blur-sm border border-border p-8 rounded-lg max-w-4xl mx-auto">
             <h3 className="text-2xl font-bold text-gradient mb-4">
               Collaboration & Partenariats
             </h3>
