@@ -1,10 +1,13 @@
+
 import { useEffect, useRef } from "react";
 import { ArrowDown, Download, Github, Linkedin, Mail } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { useTranslation } from "@/hooks/useTranslation";
 
 const HeroSection = () => {
   const heroRef = useRef<HTMLDivElement>(null);
   const textRef = useRef<HTMLDivElement>(null);
+  const { t } = useTranslation();
 
   useEffect(() => {
     // GSAP animations will be added here
@@ -56,35 +59,27 @@ const HeroSection = () => {
           </h1>
 
           <h2 className="text-2xl md:text-3xl font-light mb-8 text-foreground/80">
-            Ingénieur Informatique | Analyste Programmeur
+            {t('jobTitle')}
           </h2>
 
           <p className="text-xl md:text-2xl mb-12 text-foreground/70 max-w-3xl mx-auto leading-relaxed">
-            Spécialisé en{" "}
+            {t('specialization')}{" "}
             <span className="text-primary font-semibold">
-              gestion de projet IT
+              {t('projectManagement')}
             </span>
             ,
             <span className="text-purple-400 font-semibold">
               {" "}
-              génie logiciel
+              {t('softwareEngineering')}
             </span>{" "}
             et
             <span className="text-green-400 font-semibold">
               {" "}
-              développement web
+              {t('webDevelopment')}
             </span>
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12">
-            {/* <Button 
-              size="lg" 
-              className="cyber-border bg-primary hover:bg-primary/80 text-primary-foreground px-8 py-3 text-lg"
-            >
-              <Download className="w-5 h-5 mr-2" />
-              Télécharger CV
-            </Button> */}
-
             <div className="flex space-x-4">
               <a href="https://github.com/igorzoulender" target="_blank" rel="noopener noreferrer">
                 <Button
@@ -96,20 +91,6 @@ const HeroSection = () => {
                 </Button>
               </a>
 
-              {/* <Button 
-                variant="outline" 
-                size="lg" 
-                className="cyber-border hover:bg-primary/10"
-              >
-                <Linkedin className="w-5 h-5" />
-              </Button> */}
-              {/* <Button 
-                variant="outline" 
-                size="lg" 
-                className="cyber-border hover:bg-primary/10"
-              >
-                <Mail className="w-5 h-5" />
-              </Button> */}
               <a href="mailto:gracefelix.b@gmail.com">
                 <Button
                   variant="outline"

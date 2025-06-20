@@ -1,9 +1,11 @@
 
 import { useEffect, useRef } from 'react';
 import { GraduationCap, Award, Globe } from 'lucide-react';
+import { useTranslation } from '@/hooks/useTranslation';
 
 const EducationSection = () => {
   const sectionRef = useRef<HTMLDivElement>(null);
+  const { t } = useTranslation();
 
   const education = [
     {
@@ -21,8 +23,8 @@ const EducationSection = () => {
   ];
 
   const languages = [
-    { name: "Français", level: "Langue officielle", proficiency: 100 },
-    { name: "Anglais", level: "Moyen", proficiency: 60 }
+    { name: t('french'), level: t('officialLanguage'), proficiency: 100 },
+    { name: t('english'), level: t('medium'), proficiency: 60 }
   ];
 
   useEffect(() => {
@@ -57,7 +59,7 @@ const EducationSection = () => {
           <div className="fade-in-element">
             <h2 className="text-3xl font-bold text-gradient mb-8 flex items-center">
               <GraduationCap className="w-8 h-8 mr-3" />
-              Formation
+              {t('educationTitle')}
             </h2>
             
             <div className="space-y-6">
@@ -86,7 +88,7 @@ const EducationSection = () => {
           <div className="fade-in-element">
             <h2 className="text-3xl font-bold text-gradient mb-8 flex items-center">
               <Globe className="w-8 h-8 mr-3" />
-              Langues
+              {t('languagesTitle')}
             </h2>
             
             <div className="space-y-6">

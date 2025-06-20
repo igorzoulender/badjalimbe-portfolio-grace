@@ -1,8 +1,11 @@
 
 import { Heart, ArrowUp } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import { useTranslation } from '@/hooks/useTranslation';
 
 const Footer = () => {
+  const { t } = useTranslation();
+  
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
@@ -25,12 +28,12 @@ const Footer = () => {
               Grace Félix BADJALIMBE
             </div>
             <p className="text-foreground/70">
-              Ingénieur Informatique | Analyste Programmeur
+              {t('jobTitle')}
             </p>
           </div>
           
           <div className="text-sm text-foreground/50">
-            © 2024 Grace Félix BADJALIMBE. Tous droits réservés.
+            © 2024 Grace Félix BADJALIMBE. {t('allRightsReserved')}.
           </div>
         </div>
       </div>

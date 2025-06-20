@@ -1,13 +1,15 @@
 
 import { useEffect, useRef } from 'react';
 import { Code, Database, Globe, Settings, Users, Zap } from 'lucide-react';
+import { useTranslation } from '@/hooks/useTranslation';
 
 const SkillsSection = () => {
   const sectionRef = useRef<HTMLDivElement>(null);
+  const { t } = useTranslation();
 
   const skillCategories = [
     {
-      title: "Gestion de Projet (IT)",
+      title: t('projectManagementIT'),
       icon: Settings,
       color: "text-blue-400",
       skills: [
@@ -22,7 +24,7 @@ const SkillsSection = () => {
       ]
     },
     {
-      title: "Génie Logiciel",
+      title: t('softwareEngineeringTitle'),
       icon: Code,
       color: "text-purple-400",
       skills: [
@@ -36,7 +38,7 @@ const SkillsSection = () => {
       ]
     },
     {
-      title: "Développement Web",
+      title: t('webDevelopmentTitle'),
       icon: Globe,
       color: "text-green-400",
       skills: [
@@ -80,7 +82,7 @@ const SkillsSection = () => {
       <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-purple-500/5"></div>
       
       <div ref={sectionRef} className="container mx-auto px-6 relative z-10">
-        <h2 className="section-title text-center">Compétences</h2>
+        <h2 className="section-title text-center">{t('skillsTitle')}</h2>
         
         <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
           {skillCategories.map((category, index) => (
@@ -112,10 +114,10 @@ const SkillsSection = () => {
         {/* Technical Stats */}
         <div className="mt-16 grid grid-cols-2 md:grid-cols-4 gap-6 max-w-4xl mx-auto">
           {[
-            { label: "Projets Réalisés", value: "15+", icon: Zap },
-            { label: "Technologies", value: "10+", icon: Code },
-            { label: "Clients Satisfaits", value: "8+", icon: Users },
-            { label: "Années d'Expérience", value: "3+", icon: Database }
+            { label: t('projectsCompleted'), value: "15+", icon: Zap },
+            { label: t('technologies'), value: "10+", icon: Code },
+            { label: t('satisfiedClients'), value: "8+", icon: Users },
+            { label: t('yearsExperience'), value: "3+", icon: Database }
           ].map((stat, index) => (
             <div key={index} className="text-center p-4 cyber-border rounded-lg">
               <stat.icon className="w-8 h-8 text-primary mx-auto mb-2" />

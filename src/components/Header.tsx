@@ -1,10 +1,14 @@
 
 import { useState, useEffect } from 'react';
 import { Menu, X, User, Code, Briefcase, Mail, FolderOpen, GraduationCap } from 'lucide-react';
+import ThemeToggle from './ThemeToggle';
+import LanguageToggle from './LanguageToggle';
+import { useTranslation } from '@/hooks/useTranslation';
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const { t } = useTranslation();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -16,12 +20,12 @@ const Header = () => {
   }, []);
 
   const navItems = [
-    { name: 'Accueil', href: '#hero', icon: User },
-    { name: 'Compétences', href: '#skills', icon: Code },
-    { name: 'Expérience', href: '#experience', icon: Briefcase },
-    { name: 'Projets', href: '#projects', icon: FolderOpen },
-    { name: 'Formation', href: '#education', icon: GraduationCap },
-    { name: 'Contact', href: '#contact', icon: Mail },
+    { name: t('home'), href: '#hero', icon: User },
+    { name: t('skills'), href: '#skills', icon: Code },
+    { name: t('experience'), href: '#experience', icon: Briefcase },
+    { name: t('projects'), href: '#projects', icon: FolderOpen },
+    { name: t('education'), href: '#education', icon: GraduationCap },
+    { name: t('contact'), href: '#contact', icon: Mail },
   ];
 
   return (
@@ -48,6 +52,12 @@ const Header = () => {
             ))}
           </div>
 
+          {/* Theme and Language Controls */}
+          <div className="hidden md:flex items-center space-x-3">
+            <ThemeToggle />
+            <LanguageToggle />
+          </div>
+
           {/* Mobile Menu Button */}
           <button
             onClick={() => setIsMenuOpen(!isMenuOpen)}
@@ -71,6 +81,12 @@ const Header = () => {
                 <span>{item.name}</span>
               </a>
             ))}
+            
+            {/* Mobile Theme and Language Controls */}
+            <div className="flex items-center space-x-3 pt-4 mt-4 border-t border-border">
+              <ThemeToggle />
+              <LanguageToggle />
+            </div>
           </div>
         )}
       </nav>
