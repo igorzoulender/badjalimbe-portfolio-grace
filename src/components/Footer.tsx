@@ -29,12 +29,6 @@ const Footer = () => {
             </p>
           </div>
           
-          <div className="flex items-center space-x-2 text-foreground/60">
-            <span>Conçu avec</span>
-            <Heart className="w-4 h-4 text-red-400 animate-pulse" />
-            <span>et passion pour l'innovation</span>
-          </div>
-          
           <div className="text-sm text-foreground/50">
             © 2024 Grace Félix BADJALIMBE. Tous droits réservés.
           </div>

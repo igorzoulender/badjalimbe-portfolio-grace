@@ -7,6 +7,25 @@ const ProjectsSection = () => {
 
   const projects = [
     {
+      title: "MALEEK - GOLD",
+      subtitle: "Plateforme d’intermédiation pour l’achat d’or au Burkina Faso",
+      description: "Site web officiel de l'agence Burkinabé MALEEK - GOLD, spécialisé dans l'achat et l'investissement dans l'or.",
+      image: "/img/maleek-gold.png",
+      technologies: ["HTML", "Css", "Javascript", "Bootstrap"],
+      features: [
+        "Navigation claire et structurée",
+        "Présentation des services",
+        "Preuves de légitimité et confiance",
+        "Appels à l’action (CTA)",
+        "Optimisation du contenu pour le SEO",
+      ],
+      link: "https://maleekgold.com/",
+      category: "Site Institutionnel",
+      status: "En production",
+      year: "2025-2025",
+      team: "Développement full stack (Freelance)"
+    },
+    {
       title: "ANGE-TOGO",
       subtitle: "Agence Nationale de Gestion de l'Environnement",
       description: "Site web officiel de l'ANGE-TOGO développé dans le cadre du colloque de digitalisation des certificats de conformité environnementale.",
@@ -21,28 +40,8 @@ const ProjectsSection = () => {
       link: "https://ange.tg/",
       category: "Site Institutionnel",
       status: "En production",
-      year: "2023-2024",
-      team: "Développement Full Stack"
-    },
-
-    {
-      title: "Plateforme IAI-TOGO",
-      subtitle: "Institut Africain d'Informatique - Togo",
-      description: "Portail académique complet pour la gestion des étudiants, candidatures, emplois du temps et évaluations de l'IAI-TOGO.",
-      image: "/img/iai.png",
-      technologies: ["PHP", "Laravel", "MySQL", "Bootstrap", "JavaScript"],
-      features: [
-        "Gestion des candidatures en ligne",
-        "Système d'emploi du temps dynamique",
-        "Gestion des notes et évaluations",
-        "Portail étudiant personnalisé",
-        "Anonymat des évaluations"
-      ],
-      link: "https://new.iai-togo.tg/officiel",
-      category: "Plateforme Éducative",
-      status: "En production",
-      year: "2023-2024",
-      team: "Développement Full Stack"
+      year: "2024-2025",
+      team: "Équipe NEO START TECHNOLOGY"
     },
     {
       title: "ICC - COVOITURAGE",
@@ -60,8 +59,27 @@ const ProjectsSection = () => {
       link: "https://covoiturageicctogo.org/",
       category: "Plateforme communautaire",
       status: "En production",
+      year: "2024-2025",
+      team: "Équipe NEO START TECHNOLOGY"
+    },
+    {
+      title: "Plateforme IAI-TOGO",
+      subtitle: "Institut Africain d'Informatique - Togo",
+      description: "Portail académique complet pour la gestion des étudiants, candidatures, emplois du temps et évaluations de l'IAI-TOGO.",
+      image: "/img/iai.png",
+      technologies: ["PHP", "Laravel", "MySQL", "Bootstrap", "JavaScript"],
+      features: [
+        "Gestion des candidatures en ligne",
+        "Système d'emploi du temps dynamique",
+        "Gestion des notes et évaluations",
+        "Portail étudiant personnalisé",
+        "Anonymat des évaluations"
+      ],
+      link: "https://new.iai-togo.tg/officiel",
+      category: "Plateforme Éducative",
+      status: "En production",
       year: "2023-2024",
-      team: "Développement Full Stack"
+      team: "Équipe NEO START TECHNOLOGY"
     }
   ];
 
@@ -96,7 +114,7 @@ const ProjectsSection = () => {
       
       <div ref={sectionRef} className="container mx-auto px-6 relative z-10">
         <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold text-gradient mb-6">Projets Réalisés</h2>
+          <h2 className="text-4xl md:text-5xl font-bold text-gradient mb-6">Projets publics réalisés</h2>
           <p className="text-xl text-foreground/70 max-w-3xl mx-auto">
             Découvrez mes projets récents où j'ai pu mettre en pratique mes compétences 
             en développement web et gestion de projet IT.
@@ -126,14 +144,24 @@ const ProjectsSection = () => {
                       className="w-full h-full object-cover"
                     />
                   ) 
-                  : project.title === "ICC - COVOITURAGE" ? (
+                  : 
+                  project.title === "ICC - COVOITURAGE" ? (
                     <img 
                       src={project.image} 
                       alt="ICC - COVOITURAGE" 
                       className="w-full h-full object-cover"
                     />
                   ) 
-                  : (
+                  : 
+                  project.title === "MALEEK - GOLD" ? (
+                    <img 
+                      src={project.image} 
+                      alt="Maleek - Gold" 
+                      className="w-full h-full object-cover"
+                    />
+                  ) 
+                  : 
+                  (
                     <Globe className="w-16 h-16 text-primary animate-pulse" />
                   )}
                   <div className="absolute top-4 right-4">
