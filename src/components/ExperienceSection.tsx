@@ -37,7 +37,6 @@ const ExperienceSection = () => {
           achievements: [
             "Gestion complète des évènements et des activités avec des envoies de notifications via FireBase",
             "Gestion des familles d'impacts et des départements",
-            "Génération de bulletins de paie avec QR code d'authentification",
             "Système de demande et validation des inscriptions (Consultation du statut de sa demande)",
             "La Gestion des STARS (Serviteurs Travaillant activement pour le royaume)",
             "Tableaux de bord et reporting analytique",
