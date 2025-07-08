@@ -8,7 +8,7 @@ const ExperienceSection = () => {
     {
       title: "Développeur Full Stack Web",
       company: "Freelance",
-      period: "2025",
+      period: "Mai 2025",
       location: "Maleek - Gold",
       description: "Dévéloppement du site web de Maleek - Gold",
       projects: [
@@ -20,6 +20,7 @@ const ExperienceSection = () => {
             "Preuves de légitimité et confiance",
             "Appels à l’action (CTA)",
             "Optimisation du contenu pour le SEO",
+            "Suivi de l’évolution du cout de l’or en temps réel",
           ],
         },
       ],
@@ -27,17 +28,18 @@ const ExperienceSection = () => {
     {
       title: "Développeur Full Stack Web & Responsable du Pilotage de Projets",
       company: "NEO START TECHNOLOGY",
-      period: "2023 - Juin 2025",
+      period: "2023 - à ce jour",
       location: "Programme Schéma Directeur Départemental",
       description: "Pilotage et développement de projets stratégiques",
       projects: [
         {
           name: " Système informatisé de gestion du covoiturage - Église Impact Centre Chrétien (ICC)",
           achievements: [
-            "Gestion complète des évènements et des activités",
+            "Gestion complète des évènements et des activités avec des envoies de notifications via FireBase",
             "Gestion des familles d'impacts et des départements",
-            // "Génération de bulletins de paie avec QR code d'authentification",
-            "Système de demande et validation des inscriptions",
+            "Génération de bulletins de paie avec QR code d'authentification",
+            "Système de demande et validation des inscriptions (Consultation du statut de sa demande)",
+            "La Gestion des STARS (Serviteurs Travaillant activement pour le royaume)",
             "Tableaux de bord et reporting analytique",
           ],
         },
