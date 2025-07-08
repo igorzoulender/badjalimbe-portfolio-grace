@@ -14,7 +14,6 @@ const SkillsSection = () => {
       color: "text-blue-400",
       skills: [
         "Méthodologies AGILE",
-        "MS Project, Project Monitor",
         "Planification de projets",
         "Suivi et évaluation",
         "Cartographie des échéances",
@@ -114,9 +113,9 @@ const SkillsSection = () => {
         {/* Technical Stats */}
         <div className="mt-16 grid grid-cols-2 md:grid-cols-4 gap-6 max-w-4xl mx-auto">
           {[
-            { label: t('projectsCompleted'), value: "15+", icon: Zap },
-            { label: t('technologies'), value: "10+", icon: Code },
-            { label: t('satisfiedClients'), value: "8+", icon: Users },
+            { label: t('projectsCompleted'), value: "6", icon: Zap },
+            { label: t('technologies'), value: "5+", icon: Code },
+            { label: t('satisfiedClients'), value: "6+", icon: Users },
             { label: t('yearsExperience'), value: "3+", icon: Database }
           ].map((stat, index) => (
             <div key={index} className="text-center p-4 cyber-border rounded-lg">
