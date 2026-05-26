@@ -1,27 +1,36 @@
-
-import { Languages } from 'lucide-react';
-import { Button } from '@/components/ui/button';
 import { useTheme } from '@/contexts/ThemeContext';
 
 const LanguageToggle = () => {
   const { language, setLanguage } = useTheme();
 
-  const toggleLanguage = () => {
-    setLanguage(language === 'fr' ? 'en' : 'fr');
-  };
-
   return (
-    <Button
-      variant="outline"
-      size="sm"
-      onClick={toggleLanguage}
-      className="cyber-border hover:bg-primary/10"
-    >
-      <Languages className="w-4 h-4 mr-1" />
-      <span className="text-xs font-medium">
-        {language.toUpperCase()}
-      </span>
-    </Button>
+    <div className="inline-flex h-9 items-center rounded-sm border border-border font-mono text-[11px] uppercase tracking-[0.18em]">
+      <button
+        type="button"
+        onClick={() => setLanguage('fr')}
+        className={`px-2.5 h-full transition-colors ${
+          language === 'fr'
+            ? 'text-foreground'
+            : 'text-foreground/40 hover:text-foreground/70'
+        }`}
+        aria-pressed={language === 'fr'}
+      >
+        FR
+      </button>
+      <span className="h-3 w-px bg-border" aria-hidden="true" />
+      <button
+        type="button"
+        onClick={() => setLanguage('en')}
+        className={`px-2.5 h-full transition-colors ${
+          language === 'en'
+            ? 'text-foreground'
+            : 'text-foreground/40 hover:text-foreground/70'
+        }`}
+        aria-pressed={language === 'en'}
+      >
+        EN
+      </button>
+    </div>
   );
 };
 

@@ -1,116 +1,82 @@
-
-import { useEffect, useRef } from 'react';
-import { GraduationCap, Award, Globe } from 'lucide-react';
 import { useTranslation } from '@/hooks/useTranslation';
+import { education } from '@/data/translations';
 
 const EducationSection = () => {
-  const sectionRef = useRef<HTMLDivElement>(null);
-  const { t } = useTranslation();
-
-  const education = [
-    {
-      degree: "Licence en Génie Logiciel",
-      institution: "Institut Africain d'Informatique-TOGO",
-      period: "2019 - 2022",
-      icon: GraduationCap
-    },
-    {
-      degree: "Baccalauréat",
-      institution: "Lycée René Martine (RM)",
-      period: "2016 - 2019",
-      icon: Award
-    }
-  ];
+  const { t, tr } = useTranslation();
 
   const languages = [
-    { name: t('french'), level: t('officialLanguage'), proficiency: 100 },
-    { name: t('english'), level: t('medium'), proficiency: 60 }
+    { name: t('french'), level: t('languageNative'), proficiency: 100 },
+    { name: t('english'), level: t('languageIntermediate'), proficiency: 60 },
   ];
 
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            const elements = entry.target.querySelectorAll('.fade-in-element');
-            elements.forEach((element, index) => {
-              setTimeout(() => {
-                element.classList.add('animate-slide-up');
-              }, index * 200);
-            });
-          }
-        });
-      },
-      { threshold: 0.1 }
-    );
-
-    if (sectionRef.current) {
-      observer.observe(sectionRef.current);
-    }
-
-    return () => observer.disconnect();
-  }, []);
-
   return (
-    <section ref={sectionRef} className="py-20 relative">
-      <div className="container mx-auto px-6">
-        <div className="grid lg:grid-cols-2 gap-12 max-w-6xl mx-auto">
-          {/* Education */}
-          <div className="fade-in-element">
-            <h2 className="text-3xl font-bold text-gradient mb-8 flex items-center">
-              <GraduationCap className="w-8 h-8 mr-3" />
-              {t('educationTitle')}
-            </h2>
-            
-            <div className="space-y-6">
-              {education.map((edu, index) => (
-                <div key={index} className="cyber-border p-6 rounded-lg hover:scale-105 transition-all duration-300">
-                  <div className="flex items-start space-x-4">
-                    <edu.icon className="w-8 h-8 text-primary mt-1" />
-                    <div>
-                      <h3 className="text-xl font-semibold text-foreground mb-2">
-                        {edu.degree}
-                      </h3>
-                      <p className="text-primary font-medium mb-1">
-                        {edu.institution}
-                      </p>
-                      <p className="text-foreground/70">
-                        {edu.period}
-                      </p>
-                    </div>
+    <section id="education" className="py-24 md:py-32 border-t border-border">
+      <div className="editorial-wide">
+        <header className="grid grid-cols-1 md:grid-cols-12 gap-x-10 gap-y-6 mb-16 md:mb-24">
+          <div className="md:col-span-4">
+            <p className="section-eyebrow">{t('eyebrowEducation')}</p>
+          </div>
+          <div className="md:col-span-8">
+            <h2 className="section-title">{t('educationTitle')}</h2>
+          </div>
+        </header>
+
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-x-10 gap-y-16">
+          <div className="lg:col-span-7">
+            <p className="section-eyebrow mb-8">— {t('education')}</p>
+            <ol className="border-t border-border">
+              {education.map((edu, idx) => (
+                <li
+                  key={idx}
+                  className="grid grid-cols-12 gap-x-6 py-8 border-b border-border"
+                >
+                  <div className="col-span-4">
+                    <p className="font-mono text-[11px] uppercase tracking-[0.18em] text-ink-muted">
+                      {edu.period}
+                    </p>
                   </div>
-                </div>
+                  <div className="col-span-8">
+                    <h3 className="font-display text-xl md:text-2xl font-medium tracking-tight text-foreground">
+                      {tr(edu.degree)}
+                    </h3>
+                    <p className="mt-2 font-serif text-base italic text-foreground/70">
+                      {edu.institution}
+                    </p>
+                  </div>
+                </li>
               ))}
-            </div>
+            </ol>
           </div>
 
-          {/* Languages */}
-          <div className="fade-in-element">
-            <h2 className="text-3xl font-bold text-gradient mb-8 flex items-center">
-              <Globe className="w-8 h-8 mr-3" />
-              {t('languagesTitle')}
-            </h2>
-            
-            <div className="space-y-6">
-              {languages.map((lang, index) => (
-                <div key={index} className="cyber-border p-6 rounded-lg">
-                  <div className="flex justify-between items-center mb-3">
-                    <h3 className="text-xl font-semibold text-foreground">
+          <div className="lg:col-span-5 lg:pl-10 lg:border-l lg:border-border">
+            <p className="section-eyebrow mb-8">— {t('languagesTitle')}</p>
+            <ul className="space-y-8 border-t border-border pt-8">
+              {languages.map((lang) => (
+                <li key={lang.name}>
+                  <div className="flex items-baseline justify-between mb-3">
+                    <h3 className="font-display text-xl font-medium tracking-tight">
                       {lang.name}
                     </h3>
-                    <span className="text-primary font-medium">
+                    <span className="font-mono text-[11px] uppercase tracking-[0.18em] text-ink-muted">
                       {lang.level}
                     </span>
                   </div>
-                  <div className="w-full bg-border rounded-full h-2">
-                    <div 
-                      className="bg-gradient-to-r from-primary to-purple-500 h-2 rounded-full transition-all duration-1000"
-                      style={{ width: `${lang.proficiency}%` }}
-                    ></div>
+                  <div
+                    className="h-px w-full bg-border relative"
+                    role="progressbar"
+                    aria-valuenow={lang.proficiency}
+                    aria-valuemin={0}
+                    aria-valuemax={100}
+                    aria-label={lang.name}
+                  >
+                    <div
+                      className="absolute inset-y-0 left-0 bg-accent transition-all duration-700"
+                      style={{ width: `${lang.proficiency}%`, height: '2px', top: '-0.5px' }}
+                    />
                   </div>
-                </div>
+                </li>
               ))}
-            </div>
+            </ul>
           </div>
         </div>
       </div>

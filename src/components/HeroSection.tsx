@@ -1,111 +1,112 @@
-
-import { useEffect, useRef } from "react";
-import { ArrowDown, Download, Github, Linkedin, Mail } from "lucide-react";
-import { Button } from "@/components/ui/button";
-import { useTranslation } from "@/hooks/useTranslation";
+import { Github, Mail, ArrowDown } from 'lucide-react';
+import { useTranslation } from '@/hooks/useTranslation';
 
 const HeroSection = () => {
-  const heroRef = useRef<HTMLDivElement>(null);
-  const textRef = useRef<HTMLDivElement>(null);
   const { t } = useTranslation();
-
-  useEffect(() => {
-    // GSAP animations will be added here
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add("animate-slide-up");
-          }
-        });
-      },
-      { threshold: 0.1 }
-    );
-
-    if (heroRef.current) {
-      observer.observe(heroRef.current);
-    }
-
-    return () => observer.disconnect();
-  }, []);
 
   return (
     <section
       id="hero"
-      className="min-h-screen flex items-center justify-center relative overflow-hidden"
+      className="relative min-h-[100svh] flex items-center pt-28 pb-20"
     >
-      {/* Background Grid */}
-      <div className="absolute inset-0 bg-cyber-grid bg-grid opacity-30"></div>
+      <div className="editorial-wide w-full">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-x-10 gap-y-12">
+          <div className="lg:col-span-8 animate-fade-in">
+            <p className="section-eyebrow mb-8">{t('heroEyebrow')}</p>
 
-      {/* Floating Elements */}
-      <div className="absolute top-20 left-10 w-20 h-20 bg-primary/20 rounded-full animate-float"></div>
-      <div
-        className="absolute bottom-20 right-10 w-16 h-16 bg-purple-500/20 rounded-full animate-float"
-        style={{ animationDelay: "1s" }}
-      ></div>
-      <div
-        className="absolute top-1/2 left-20 w-12 h-12 bg-green-500/20 rounded-full animate-float"
-        style={{ animationDelay: "2s" }}
-      ></div>
+            <h1 className="font-display font-medium leading-[0.95] tracking-tight text-foreground">
+              <span className="block text-[clamp(2.75rem,8vw,7rem)]">Grace Félix</span>
+              <span className="block text-[clamp(2.75rem,8vw,7rem)] italic font-normal text-foreground/90">
+                Badjalimbe<span className="text-accent">.</span>
+              </span>
+            </h1>
 
-      <div
-        ref={heroRef}
-        className="container mx-auto px-6 text-center relative z-10"
-      >
-        <div ref={textRef} className="max-w-4xl mx-auto">
-          <h1 className="text-5xl md:text-7xl font-orbitron font-black mb-6 text-gradient">
-            Grace Félix
-            <span className="block">BADJALIMBE</span>
-          </h1>
+            <p className="mt-10 font-serif text-xl md:text-2xl leading-relaxed text-foreground/85 max-w-2xl">
+              {t('heroLead')}
+            </p>
 
-          <h2 className="text-2xl md:text-3xl font-light mb-8 text-foreground/80">
-            {t('jobTitle')}
-          </h2>
+            <p className="mt-4 font-serif text-base md:text-lg italic text-ink-muted max-w-2xl">
+              {t('heroSpecialization')}
+            </p>
 
-          <p className="text-xl md:text-2xl mb-12 text-foreground/70 max-w-3xl mx-auto leading-relaxed">
-            {t('specialization')}{" "}
-            <span className="text-primary font-semibold">
-              {t('projectManagement')}
-            </span>
-            ,
-            <span className="text-purple-400 font-semibold">
-              {" "}
-              {t('softwareEngineering')}
-            </span>{" "}
-            et
-            <span className="text-green-400 font-semibold">
-              {" "}
-              {t('webDevelopment')}
-            </span>
-          </p>
-
-          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12">
-            <div className="flex space-x-4">
-              <a href="https://github.com/igorzoulender" target="_blank" rel="noopener noreferrer">
-                <Button
-                  variant="outline"
-                  size="lg"
-                  className="cyber-border hover:bg-primary/10"
-                >
-                  <Github className="w-5 h-5" />
-                </Button>
+            <div className="mt-12 flex flex-wrap items-center gap-x-8 gap-y-4">
+              <a
+                href="#projects"
+                className="link-underline font-mono text-xs uppercase tracking-[0.2em]"
+              >
+                {t('seeWork')}
+                <span aria-hidden="true" className="ml-2">→</span>
+              </a>
+              <a
+                href="#contact"
+                className="link-underline font-mono text-xs uppercase tracking-[0.2em] text-accent"
+              >
+                {t('getInTouch')}
               </a>
 
-              <a href="mailto:gracefelix.b@gmail.com">
-                <Button
-                  variant="outline"
-                  size="lg"
-                  className="cyber-border hover:bg-primary/10"
-                >
-                  <Mail className="w-5 h-5" />
-                </Button>
+              <div className="hidden md:block h-4 w-px bg-border" aria-hidden="true" />
+
+              <a
+                href="https://github.com/igorzoulender"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="GitHub"
+                className="inline-flex items-center gap-2 text-foreground/60 transition-colors hover:text-foreground"
+              >
+                <Github className="h-4 w-4" />
+                <span className="font-mono text-xs uppercase tracking-[0.18em]">GitHub</span>
+              </a>
+              <a
+                href="mailto:gracefelix.b@gmail.com"
+                aria-label="Email"
+                className="inline-flex items-center gap-2 text-foreground/60 transition-colors hover:text-foreground"
+              >
+                <Mail className="h-4 w-4" />
+                <span className="font-mono text-xs uppercase tracking-[0.18em]">Email</span>
               </a>
             </div>
           </div>
 
-          <div className="animate-bounce">
-            <ArrowDown className="w-8 h-8 mx-auto text-primary" />
-          </div>
+          <aside className="lg:col-span-4 lg:pl-10 lg:border-l lg:border-border animate-fade-in [animation-delay:120ms]">
+            <div className="space-y-8 lg:pt-2">
+              <div>
+                <p className="section-eyebrow mb-3">{t('heroIntro')}</p>
+                <p className="font-serif text-sm text-ink-muted leading-relaxed">
+                  Laravel · Nuxt.js · React · Flutter · TypeScript.
+                </p>
+              </div>
+
+              <div>
+                <p className="section-eyebrow mb-3">{t('heroLocation')}</p>
+                <p className="font-serif text-sm text-ink-muted">
+                  6°08′ N · 1°13′ E
+                </p>
+              </div>
+
+              <div className="flex items-center gap-3">
+                <span
+                  className="relative inline-flex h-2 w-2"
+                  aria-hidden="true"
+                >
+                  <span className="absolute inset-0 rounded-full bg-accent/60 animate-ping" />
+                  <span className="relative inline-flex h-2 w-2 rounded-full bg-accent" />
+                </span>
+                <p className="font-mono text-[11px] uppercase tracking-[0.18em] text-foreground/80">
+                  {t('heroAvailability')}
+                </p>
+              </div>
+            </div>
+          </aside>
+        </div>
+
+        <div className="mt-16 lg:mt-24 flex items-center justify-between border-t border-border pt-6">
+          <p className="font-mono text-[11px] uppercase tracking-[0.2em] text-ink-muted hidden sm:block">
+            Scroll
+          </p>
+          <ArrowDown className="h-4 w-4 text-ink-muted animate-bounce" aria-hidden="true" />
+          <p className="font-mono text-[11px] uppercase tracking-[0.2em] text-ink-muted">
+            © 2025
+          </p>
         </div>
       </div>
     </section>

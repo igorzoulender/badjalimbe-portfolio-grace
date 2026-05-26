@@ -1,6 +1,5 @@
-
-import { useState, useEffect } from 'react';
-import { Menu, X, User, Code, Briefcase, Mail, FolderOpen, GraduationCap } from 'lucide-react';
+import { useEffect, useState } from 'react';
+import { Menu, X } from 'lucide-react';
 import ThemeToggle from './ThemeToggle';
 import LanguageToggle from './LanguageToggle';
 import { useTranslation } from '@/hooks/useTranslation';
@@ -11,85 +10,85 @@ const Header = () => {
   const { t } = useTranslation();
 
   useEffect(() => {
-    const handleScroll = () => {
-      setScrolled(window.scrollY > 50);
-    };
-
-    window.addEventListener('scroll', handleScroll);
+    const handleScroll = () => setScrolled(window.scrollY > 24);
+    handleScroll();
+    window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
   const navItems = [
-    { name: t('home'), href: '#hero', icon: User },
-    { name: t('skills'), href: '#skills', icon: Code },
-    { name: t('experience'), href: '#experience', icon: Briefcase },
-    { name: t('projects'), href: '#projects', icon: FolderOpen },
-    { name: t('education'), href: '#education', icon: GraduationCap },
-    { name: t('contact'), href: '#contact', icon: Mail },
+    { name: t('skills'), href: '#skills' },
+    { name: t('experience'), href: '#experience' },
+    { name: t('projects'), href: '#projects' },
+    { name: t('education'), href: '#education' },
+    { name: t('contact'), href: '#contact' },
   ];
 
   return (
-    <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-      scrolled ? 'bg-background/80 backdrop-blur-lg border-b border-border' : 'bg-transparent'
-    }`}>
-      <nav className="container mx-auto px-6 py-4">
-        <div className="flex items-center justify-between">
-          <div className="text-2xl font-orbitron font-bold text-gradient">
-            GFB
-          </div>
+    <header
+      className={`fixed inset-x-0 top-0 z-50 transition-colors duration-300 ${
+        scrolled
+          ? 'bg-background/85 backdrop-blur-md border-b border-border'
+          : 'bg-transparent'
+      }`}
+    >
+      <nav className="editorial-wide flex h-16 items-center justify-between">
+        <a
+          href="#hero"
+          className="font-display text-2xl font-semibold tracking-tight text-foreground"
+          aria-label="Grace Félix BADJALIMBE — Accueil"
+        >
+          Grace<span className="text-accent">.</span>
+        </a>
 
-          {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center space-x-8">
-            {navItems.map((item) => (
-              <a
-                key={item.name}
-                href={item.href}
-                className="flex items-center space-x-2 text-foreground/70 hover:text-primary transition-colors duration-300 group"
-              >
-                <item.icon className="w-4 h-4 group-hover:animate-pulse" />
-                <span>{item.name}</span>
-              </a>
-            ))}
-          </div>
-
-          {/* Theme and Language Controls */}
-          <div className="hidden md:flex items-center space-x-3">
-            <ThemeToggle />
-            <LanguageToggle />
-          </div>
-
-          {/* Mobile Menu Button */}
-          <button
-            onClick={() => setIsMenuOpen(!isMenuOpen)}
-            className="md:hidden p-2 text-foreground hover:text-primary transition-colors"
-          >
-            {isMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
-          </button>
+        <div className="hidden md:flex items-center gap-8">
+          {navItems.map((item) => (
+            <a
+              key={item.href}
+              href={item.href}
+              className="font-mono text-[11px] uppercase tracking-[0.18em] text-foreground/60 transition-colors hover:text-foreground"
+            >
+              {item.name}
+            </a>
+          ))}
         </div>
 
-        {/* Mobile Navigation */}
-        {isMenuOpen && (
-          <div className="md:hidden mt-4 p-4 bg-card/90 backdrop-blur-lg rounded-lg border border-border">
+        <div className="hidden md:flex items-center gap-2">
+          <LanguageToggle />
+          <ThemeToggle />
+        </div>
+
+        <button
+          type="button"
+          onClick={() => setIsMenuOpen((v) => !v)}
+          className="md:hidden inline-flex h-9 w-9 items-center justify-center rounded-sm border border-border text-foreground"
+          aria-label={isMenuOpen ? 'Fermer le menu' : 'Ouvrir le menu'}
+          aria-expanded={isMenuOpen}
+        >
+          {isMenuOpen ? <X className="h-4 w-4" /> : <Menu className="h-4 w-4" />}
+        </button>
+      </nav>
+
+      {isMenuOpen && (
+        <div className="md:hidden border-t border-border bg-background/95 backdrop-blur-md">
+          <div className="editorial-wide py-6 flex flex-col gap-5">
             {navItems.map((item) => (
               <a
-                key={item.name}
+                key={item.href}
                 href={item.href}
                 onClick={() => setIsMenuOpen(false)}
-                className="flex items-center space-x-3 py-3 text-foreground/70 hover:text-primary transition-colors"
+                className="font-mono text-xs uppercase tracking-[0.18em] text-foreground/70 hover:text-foreground"
               >
-                <item.icon className="w-5 h-5" />
-                <span>{item.name}</span>
+                {item.name}
               </a>
             ))}
-            
-            {/* Mobile Theme and Language Controls */}
-            <div className="flex items-center space-x-3 pt-4 mt-4 border-t border-border">
-              <ThemeToggle />
+            <div className="flex items-center gap-3 pt-4 border-t border-border">
               <LanguageToggle />
+              <ThemeToggle />
             </div>
           </div>
-        )}
-      </nav>
+        </div>
+      )}
     </header>
   );
 };
